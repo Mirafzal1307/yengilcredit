@@ -2,6 +2,7 @@ import { Container, Grid, useMediaQuery } from "@mui/material";
 import { Box } from "@mui/system";
 import { makeStyles } from "@material-ui/core/styles";
 import FooterLeft from "../../Images/footer_left.svg";
+import { Trans, useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -50,6 +51,13 @@ const BeforeFooter = () => {
   const classes = useStyles();
   const matches = useMediaQuery("(min-width:1100px)");
 
+  const { t, i18n } = useTranslation()
+
+  const changeLanguage = (language: any) => {
+    i18n.changeLanguage(language)
+  }
+
+
   return (
     <>
       <Box
@@ -69,6 +77,8 @@ const BeforeFooter = () => {
               Biz haqimizda
             </h2>
           </Grid>
+          <button onClick={() => changeLanguage("en")}>UZ</button>
+          <button onClick={() => changeLanguage("ru")}>RU</button>
         </Container>
         <Box sx={{ width: "100%" }}>
           <Container style={{ display: "flex", alignItems: "center" }}>
@@ -88,7 +98,7 @@ const BeforeFooter = () => {
                   // style={{ textIndent: "5%" }}
                   className={classes.footerTopText}
                 >
-                  bizning shahrimizda ilh bor online savdo sayti rasman ishga tushdi.
+                  bizning shahrimizda ilk bor online savdo sayti rasman ishga tushdi.
                 </p>
                 {/* <ul className="ul">
                   <li className={classes.ul}>
@@ -102,9 +112,11 @@ const BeforeFooter = () => {
                     mavjud qurilmalar va texnikalarning kuchi yetarli emas.
                   </li>
                 </ul> */}
-                <p style={{ marginTop: "50px" }} className={classes.footerTopText}>
-                  Biz uchun har biringiz muhimsiz azizlar.
-                </p>
+                <Trans i18nKey="textFooterTwo">
+                  <p style={{ marginTop: "50px" }} className={classes.footerTopText}>
+                    Biz uchun har biringiz muhimsiz azizlar.
+                  </p>
+                </Trans>
               </Grid>
             </Grid>
           </Container>
