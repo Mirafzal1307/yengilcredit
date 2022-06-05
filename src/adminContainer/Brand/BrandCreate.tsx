@@ -11,7 +11,7 @@ import { createTheme } from "@mui/material/styles";
 import Notification from "../Snackbar/Notification";
 import { useNavigate } from "react-router-dom";
 import { refresh } from "../Modal/refresh";
-import './brand.css'
+import "./brand.css";
 const theme = createTheme();
 
 const useStyles = makeStyles({
@@ -86,7 +86,7 @@ const useStyles = makeStyles({
     width: "95px",
     height: "95px",
     border: "none !important",
-  }
+  },
 });
 
 interface Data {
@@ -107,27 +107,22 @@ const BrandCreate = () => {
   });
   // const navigate = useNavigate();
 
-
-  const inp = document.querySelector('input');
-  const bal = inp?.value
+  const inp = document.querySelector("input");
+  const bal = inp?.value;
 
   if (bal?.length === 1) {
-    inp?.classList.add('active')
-  }
-  else if (bal?.length === 2) {
-    inp?.classList.add('active')
-  }
-  else if (bal?.length === 3) {
-    inp?.classList.add('active')
-  }
-  else {
-    inp?.classList.remove('active')
-    inp?.classList.add('noactive')
+    inp?.classList.add("active");
+  } else if (bal?.length === 2) {
+    inp?.classList.add("active");
+  } else if (bal?.length === 3) {
+    inp?.classList.add("active");
+  } else {
+    inp?.classList.remove("active");
+    inp?.classList.add("noactive");
   }
 
   const fileInputRef = useRef<any>();
   const classes = useStyles();
-
 
   const handleInputChange = (e: any) => {
     const file = e.target.files[0];
@@ -170,7 +165,7 @@ const BrandCreate = () => {
               message: "Muvaffaqiyatli yaratildi.",
               type: "success",
             });
-            refresh()
+            refresh();
           }
           return await getAllBrandDatas();
         })
@@ -201,7 +196,6 @@ const BrandCreate = () => {
     }
   }, [image]);
 
-
   return (
     <React.Fragment>
       <Box className={classes.bigFirstBox}>
@@ -210,7 +204,7 @@ const BrandCreate = () => {
           <Box>
             <h2 className={classes.boxSecondTitle}>Brand nomi</h2>
             <input
-              style={{borderColor: '#9F9F9F'}}
+              style={{ borderColor: "#9F9F9F" }}
               type="text"
               name="brand"
               placeholder="type"
