@@ -151,13 +151,13 @@ const BrandClient = () => {
                 <CircularProgress />
               </Box>
             ) : brands ? (
-              discount.map((item: any, key: any) => {
+              discount.map((item: any) => {
                 const productByBrand = () => {
                   getProduct(item.id);
                 };
                 return (
                   <SplideSlide className={classes.splide}>
-                    <Box className={classes.bodyCard} key={key}>
+                    <Box className={classes.bodyCard} key={item.id}>
                       <Box>
                         <img
                           src={`${MINIO_FULL_ENDPOINT_FOR}/brand/${item.photo_name}`}
@@ -191,5 +191,5 @@ const BrandClient = () => {
   );
 };
 
-
+console.clear();
 export default BrandClient;

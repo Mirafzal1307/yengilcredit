@@ -251,9 +251,9 @@ const CardProducts = () => {
               />
             ) : (
               recommended &&
-              recommended?.map((item: any, key: any) => (
-                <SplideSlide className={classes.splide}>
-                  <Box className={classes.bodyCard} key={key}>
+              recommended?.map((item: any) => (
+                <SplideSlide className={classes.splide} key={item?.id}>
+                  <Box className={classes.bodyCard} >
                     <Box style={{ margin: "0px 10px" }}>
                                   <Link to={`/product/client/details/${item?.id}`}>
                         <div className={classes.BodyCardInside}>
@@ -483,9 +483,9 @@ const CardProducts = () => {
               />
             ) : (
               popular &&
-              popular?.map((item: any, key: any) => (
-                <SplideSlide className={classes.splide}>
-                  <Box className={classes.bodyCard} key={key}>
+              popular?.map((item: any) => (
+                <SplideSlide className={classes.splide} key={item?.id}>
+                  <Box className={classes.bodyCard}>
                     <Box>
                       <Link to={`/product/client/details/${item?.id}`}>
                         <div className={classes.BodyCardInside}>
@@ -723,9 +723,9 @@ const CardProducts = () => {
             ) : (
               last &&
               
-              last.map((item: any, key: any) => (
-                <SplideSlide className={classes.splide}>
-                  <Box className={classes.bodyCard} key={key}>
+              last.map((item: any, ) => (
+                <SplideSlide className={classes.splide} key={item?.id}>
+                  <Box className={classes.bodyCard}>
                     <Box>
                       <Link to={`/product/client/details/${item?.id}`}>
                         <div className={classes.BodyCardInside}>
@@ -912,6 +912,7 @@ const CardProducts = () => {
     </>
   );
 };
+console.clear();
 
 
 export default CardProducts;

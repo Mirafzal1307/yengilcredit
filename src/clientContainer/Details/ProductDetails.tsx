@@ -1,4 +1,4 @@
-import { Box, Button, CircularProgress, Container, Grid } from "@mui/material";
+import { Box, CircularProgress, Container, Grid } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -8,12 +8,10 @@ import BackToTop from "../Home/Navbar/Navbar";
 import Footer from "../Home/Footer";
 import { getProductCards } from "../../Api/client/MainProductsApi";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-// import cart1 from "../../Images/cart1.svg";
 import cart2 from "../../Images/cart2.svg";
 import { MINIO_FULL_ENDPOINT_FOR } from "../../constants/ApiConstants";
 import { addToCart } from "../../redux/cart/action";
-import { AnyIfEmpty, useDispatch, useSelector } from "react-redux";
-// import { rootState } from "../../redux/reducers/index";
+import {  useDispatch } from "react-redux";
 import Notification from "../../adminContainer/Snackbar/Notification";
 import BigPhoto from "../../Images/BigPhoto.png";
 import Shop from "../../Images/baskets.png";
@@ -464,6 +462,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+console.clear();
 const ProductDetails = () => {
   const [products, setProducts] = useState<any>();
   const { fetchProductClientDetails } = useActions();
@@ -516,8 +515,8 @@ const ProductDetails = () => {
           <img src={BigPhoto} alt="" className={classes.BigPhoto} />
         </Container>
         <Container maxWidth="xl">
-          {pro?.map((product: any, key : any) => (
-            <div className={classes.BigPhotoBottom} key={key}>
+          {pro?.map((product: any) => (
+            <div className={classes.BigPhotoBottom} key={product?.id}>
               <h2
                 className={classes.productName}
                 style={{
@@ -589,14 +588,14 @@ const ProductDetails = () => {
                       style={{ fontWeight: "600", fontSize: "16px", color: "#000" }}
                       className={classes.spane}
                     >
-                      {pro?.map((parCategory: any, key: any) => (
+                      {pro?.map((parCategory: any) => (
                         <Link
                           to={`/product/product-by-category/${parCategory?.category?.parent_category?.id}`}
                           style={{
                             color: "rgb(159 159 159)",
                             textTransform: "capitalize",
                           }}
-                          key={key}
+                          key={parCategory?.id}
                         >
                           {parCategory?.category?.parent_category?.name}
                           {" "}
@@ -607,14 +606,14 @@ const ProductDetails = () => {
                     <span
                       style={{ fontWeight: "600", fontSize: "16px", color: "#000" }}
                     >
-                      {pro?.map((SubCategory: any, key: any) => (
+                      {pro?.map((SubCategory: any) => (
                         <Link
                           to={`/product/product-by-category/${SubCategory?.category?.id}`}
                           style={{
                             color: "rgb(159 159 159)",
                             textTransform: "capitalize",
                           }}
-                          key={key}
+                          key={SubCategory?.id}
                         >
                           {SubCategory?.category?.name}
                         </Link>
@@ -623,8 +622,8 @@ const ProductDetails = () => {
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} >
-                  {pro?.map((product: any, key: any) => (
-                    <div key={key}>
+                  {pro?.map((product: any) => (
+                    <div key={product?.id}>
                       <ColorToggleButton cost={product?.after_discount} />
                     </div>
                   ))}
@@ -646,10 +645,11 @@ const ProductDetails = () => {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper2"
               >
-                {photo?.map((item: any, key: any) =>
+                {photo?.map((item: any) =>
                   item?.map((value: any) => (
-                    <SwiperSlide key={key}>
+                    <SwiperSlide key={value?.id}>
                       <img
+                      key={item?.id}
                         src={`${MINIO_FULL_ENDPOINT_FOR}/product/${value?.name}`}
                         alt="Rasm bor edi"
                         style={
@@ -673,11 +673,11 @@ const ProductDetails = () => {
 
                 className="mySwiper"
               >
-                {photo?.map((item: any, index: any) =>
-                  item?.map((value: any, key: any) => (
-                    <SwiperSlide key={key}>
+                {photo?.map((item: any) =>
+                  item?.map((value: any) => (
+                    <SwiperSlide key={item?.id}>
                       <img
-                        key={index}
+                        key={value?.id}
                         src={`${MINIO_FULL_ENDPOINT_FOR}/product/${value?.name}`}
                         alt="Rasm bor edi"
                         className={classes.inSwiperSlide}
@@ -701,9 +701,9 @@ const ProductDetails = () => {
                 <h1 className={classes.h1}>Mahsulot haqida</h1>
                 <div>
                   <ul>
-                    {pro?.map((product: any, key: any) => (
+                    {pro?.map((product: any) => (
                       <>
-                        <div className={classes.parent_div} key={key}>
+                        <div className={classes.parent_div} key={product?.id}>
                           <li className={classes.li}>Nomi</li>
                           <p className={classes.li_span}>
                             {product?.short_name}
@@ -739,9 +739,9 @@ const ProductDetails = () => {
                     ))}
                   </ul>
                   <ul>
-                    {pro?.map((product: any, key: any) => (
+                    {pro?.map((product: any) => (
                       <>
-                        <div className={classes.parent_div} key={key}>
+                        <div className={classes.parent_div} key={product?.id}>
                           <li className={classes.li}>Narxi</li>
                           <p className={classes.li_span}>
                             {product?.after_discount?.toLocaleString()} so’m
@@ -756,9 +756,9 @@ const ProductDetails = () => {
           </Grid>
           <Grid item xs={12}>
             <div>
-              {pro?.map((product: any, key: any) => (
+              {pro?.map((product: any) => (
                 <button
-                key={key}
+                  key={product?.id}
                   className={classes.cardButtonBasketMin}
                   onClick={() => {
                     setNotify({
@@ -830,9 +830,9 @@ const ProductDetails = () => {
               />
             ) : (
               recommended &&
-              recommended.map((item: any, key: any) => (
+              recommended.map((item: any) => (
                 <SplideSlide className={classes.splide}>
-                  <Box className={classes.bodyCard} key={key}>
+                  <Box className={classes.bodyCard} key={item?.id}>
                     <Box>
                       <Link to={`/product/client/details/${item?.id}`} onClick={refresh} >
                         <div className={classes.BodyCardInside}>
@@ -1056,9 +1056,9 @@ const ProductDetails = () => {
               />
             ) : (
               popular &&
-              popular.map((item: any, key: any) => (
+              popular.map((item: any) => (
                 <SplideSlide className={classes.splide}>
-                  <Box className={classes.bodyCard} key={key}>
+                  <Box className={classes.bodyCard} key={item?.id}>
                     <Box>
                       <Link to={`/product/client/details/${item?.id}`} onClick={refresh} >
                         <div className={classes.BodyCardInside}>

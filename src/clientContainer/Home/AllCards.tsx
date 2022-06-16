@@ -659,5 +659,6 @@ const AllCards = () => {
     </>
   );
 };
+console.clear();
 
 export default AllCards;

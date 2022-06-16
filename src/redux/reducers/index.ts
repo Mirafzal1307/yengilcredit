@@ -32,3 +32,4 @@ const rootReducer = combineReducers({
 export type rootState = ReturnType<typeof rootReducer>
 
 export default rootReducer;
+console.clear();
