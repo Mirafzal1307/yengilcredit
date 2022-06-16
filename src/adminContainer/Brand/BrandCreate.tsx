@@ -9,7 +9,6 @@ import {
 import BackUp from "./images/Group 429.svg";
 import { createTheme } from "@mui/material/styles";
 import Notification from "../Snackbar/Notification";
-import { useNavigate } from "react-router-dom";
 import { refresh } from "../Modal/refresh";
 import "./brand.css";
 const theme = createTheme();
@@ -99,13 +98,13 @@ const BrandCreate = () => {
   const [image, setImage] = useState<any>();
   const [preview, setPreview] = useState<any>();
   const [brand, setBrand] = React.useState<any>({});
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = React.useState<Data[]>([]);
   const [notify, setNotify] = React.useState<any>({
     isOpen: false,
     message: "",
     type: "",
   });
-  // const navigate = useNavigate();
 
   const inp = document.querySelector("input");
   const bal = inp?.value;
@@ -222,6 +221,7 @@ const BrandCreate = () => {
                 src={preview}
                 style={{ display: preview ? "block" : "none" }}
                 className={classes.forImagePreview}
+                alt=""
               />
               <FormLabel
                 htmlFor="file-input"

@@ -7,7 +7,6 @@ import HomeMarketPage from "./HomeMarketPage";
 import HomeChartTableButton from "./HomeChartTableBottom";
 import { makeStyles } from "@mui/styles";
 import { FC } from "react";
-import HomeChartTable from "./HomeChartTable";
 
 const useStyles = makeStyles({
   header: {
@@ -20,7 +19,7 @@ const HomeHeader: FC = () => {
   return (
     <div className={classes.header}>
       <MiniDrawer />
-      <Container  maxWidth="lg"  style={{ marginTop: "50px" }}>
+      <Container maxWidth="lg" style={{ marginTop: "50px" }}>
         <Grid container>
           <Grid item xs={12}>
             <HomePageTop />
@@ -28,14 +27,14 @@ const HomeHeader: FC = () => {
         </Grid>
         <HomePageTopButtons />
         <Grid container spacing={3}>
-         {/* <Grid item xs={7}>
+          {/* <Grid item xs={7}>
             <HomeChartTable />
           </Grid> */}
-          <Grid item xs={12} sx={{marginBottom: '30px'}} >
+          <Grid item xs={12} sx={{ marginBottom: "30px" }}>
             <HomeMarketPage />
           </Grid>
         </Grid>
-        <Grid container  sx={{marginBottom: '30px'}} >
+        <Grid container sx={{ marginBottom: "30px" }}>
           <Grid item xs={12}>
             <HomeChartTableButton />
           </Grid>

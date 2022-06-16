@@ -5,7 +5,6 @@ import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { makeStyles } from "@mui/styles";
 import del from "../.././Images/delete.png";
 import { refresh } from "./refresh";
-import { useNavigate } from "react-router-dom";
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -115,7 +114,6 @@ const Modal = (props: any) => {
   //     , 2000)
 
   // }
-  const navigate = useNavigate();
 
   return (
     <React.Fragment>

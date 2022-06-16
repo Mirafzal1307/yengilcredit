@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  getAllBrandData,
-  deleteBrandData,
-  getBrand,
-} from "../../Api/admin/AdminBrandApi";
+import { deleteBrandData, getBrand } from "../../Api/admin/AdminBrandApi";
 import { makeStyles } from "@mui/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,7 +7,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Checkbox from "@mui/material/Checkbox";
-import { API_URL, MINIO_FULL_ENDPOINT_FOR } from "../../constants/ApiConstants";
+import { MINIO_FULL_ENDPOINT_FOR } from "../../constants/ApiConstants";
 import { Link } from "react-router-dom";
 import edit from "./images/edit.svg";
 import Modal from "../Modal/Modal";
@@ -20,6 +16,7 @@ import { useActions } from "../../hook/useActions";
 import { useTypedSelector } from "../../hook/useTypedSelector";
 import { Box, LinearProgress, Tooltip } from "@mui/material";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface Data {
   brand?: any;
   photo_name: string;
@@ -55,8 +52,8 @@ const useStyles = makeStyles({
   },
   forCell: {
     display: "block !important",
-    margin: "auto !important"
-  }
+    margin: "auto !important",
+  },
 });
 
 const BrandTable = () => {
@@ -73,6 +70,7 @@ const BrandTable = () => {
 
   React.useEffect(() => {
     fetchBrands();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
@@ -111,6 +109,7 @@ const BrandTable = () => {
   };
 
   const getBrandByID = async (id: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const brandData = await getBrand(id);
   };
 
@@ -149,7 +148,7 @@ const BrandTable = () => {
             getBrandByID(item.id);
           };
           return (
-            <TableBody>
+            <TableBody key={item.id}>
               <TableRow style={{ alignItems: "center" }}>
                 <TableCell padding="checkbox">
                   <Checkbox
@@ -170,14 +169,12 @@ const BrandTable = () => {
                   className={classes.forValueCols}
                   style={{ textAlign: "center" }}
                 >
-                  {" "}
                   {item.name}
                 </TableCell>
                 <TableCell
                   className={classes.forValueCols}
                   style={{ textAlign: "center" }}
                 >
-                  {" "}
                   {item.products_count}
                 </TableCell>
                 <TableCell>
@@ -187,14 +184,11 @@ const BrandTable = () => {
                         className={classes.editButton}
                         onClick={getBrandToUpdate}
                       >
-                        <img
-                          src={edit}
-                          alt="rasm bor edi"
-                        />
+                        <img src={edit} alt="rasm bor edi" />
                       </button>
                     </Tooltip>
                   </Link>
-                  <Modal data={delData} to="brand"/>
+                  <Modal data={delData} to="brand" />
                   <Notification notify={notify} setNotify={setNotify} />
                 </TableCell>
               </TableRow>

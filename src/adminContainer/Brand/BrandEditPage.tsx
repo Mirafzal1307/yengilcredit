@@ -8,11 +8,7 @@ import { updateBrandData, getBrand } from "../../Api/admin/AdminBrandApi";
 import { useNavigate, useParams } from "react-router-dom";
 import { MINIO_FULL_ENDPOINT_FOR } from "../../constants/ApiConstants";
 import Notification from "../Snackbar/Notification";
-import { Navigate } from "react-router-dom";
-// import { Redirect } from "react-router-dom";
-import './brand.css';
-
-
+import "./brand.css";
 
 const useStyles = makeStyles({
   bigFirstBox: {
@@ -98,7 +94,7 @@ const BrandEditPage = () => {
     }
   };
   let img = `${MINIO_FULL_ENDPOINT_FOR}/brand/${photo}`;
-  console.log(`Image from Minio----${img}`)
+
   const sendDataToAPI = async () => {
     let form = new FormData();
 
@@ -125,7 +121,7 @@ const BrandEditPage = () => {
             message: "Muvaffaqiyatli tahrirlandi.",
             type: "success",
           });
-          // return <Navigate to="/brand"/>
+
           setTimeout(() => {
             navigate("/brand");
           }, 500);
@@ -166,24 +162,20 @@ const BrandEditPage = () => {
 
   useEffect(() => {
     getImage(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
-    const inpt = document.querySelector('input');
-    const bal = inpt?.value
-    if (bal?.length === 1) {
-      inpt?.classList.add('active')
-    }
-    else if (bal?.length === 2) {
-      inpt?.classList.add('active')
-    }
-    else if (bal?.length === 3) {
-      inpt?.classList.add('active')
-    }
-    else {
-      inpt?.classList.remove('active')
-    }
-
+  const inpt = document.querySelector("input");
+  const bal = inpt?.value;
+  if (bal?.length === 1) {
+    inpt?.classList.add("active");
+  } else if (bal?.length === 2) {
+    inpt?.classList.add("active");
+  } else if (bal?.length === 3) {
+    inpt?.classList.add("active");
+  } else {
+    inpt?.classList.remove("active");
+  }
 
   return (
     <>
@@ -210,7 +202,7 @@ const BrandEditPage = () => {
                 <form style={{ display: "flex", alignItems: "center" }}>
                   <img
                     src={preview ? preview : img}
-                     alt="rasm bor edi"
+                    alt="rasm bor edi"
                     className={classes.forImagePreview}
                   />
                   <FormLabel
