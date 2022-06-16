@@ -141,7 +141,7 @@ const Footer = () => {
         {/* </Grid>
         </Container> */}
         <Container maxWidth="xl">
-          <Grid style={{ display: 'flex', textAlign: "center", alignItems: "center" }}>
+          <Grid item style={{ display: 'flex', textAlign: "center", alignItems: "center" }}>
             <Grid xs={4}>
               <p className={classes.footer_text}>Barcha huquqlar himoyalangan</p>
             </Grid>
