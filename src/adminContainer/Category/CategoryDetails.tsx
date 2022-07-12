@@ -365,10 +365,7 @@ export default function EnhancedTable(): JSX.Element {
   return (
     <>
       <MiniDrawer />
-      <Container
-        style={{ paddingBottom: "50px !important", marginRight: 0 }}
-        maxWidth="xl"
-      >
+      <Container>
         <h1 className={classes.h1}>Turkum</h1>
         <Box className={classes.input_two}>
           <Paper className={classes.paper}>
