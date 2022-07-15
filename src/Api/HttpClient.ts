@@ -28,6 +28,7 @@ class ApiClient {
         if (token) {
           config.headers["access_token"] = token; // for Node.js Express back-end
         }
+        // console.log(token);
         return config;
       },
       (error) => {

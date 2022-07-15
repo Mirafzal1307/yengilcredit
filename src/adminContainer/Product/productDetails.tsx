@@ -316,6 +316,7 @@ function ProductDetails(): JSX.Element {
   const { products, error, loading } = useTypedSelector((state) => state.byId);
   const pro: any = products?.Product;
   const des: any = products?.Description;
+  console.log(products);
   const classes = useStyles();
   const { id } = useParams();
   const { fetchProductsById } = useActions();
@@ -339,8 +340,8 @@ function ProductDetails(): JSX.Element {
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <h3 className={classes.ProductName}>{pro[0]?.name}</h3>
-                  <i className={classes.BrandName}>{pro[0]?.brand?.name}</i>
+                  {/* <h3 className={classes.ProductName}>{pro[0]?.name}</h3> */}
+                  {/* <i className={classes.BrandName}>{pro[0]?.brand?.name}</i> */}
                 </div>
               </Grid>
               <Box style={{ display: "flex", alignItems: "center" }}>
@@ -356,7 +357,7 @@ function ProductDetails(): JSX.Element {
                     }}
                   >
                     <img
-                      src={`${MINIO_FULL_ENDPOINT_FOR}/product/${pro[0]?.photos[0].name}`}
+                      src={`${MINIO_FULL_ENDPOINT_FOR}/product/${pro[0]?.photos[0]?.name}`}
                       alt="Rasm bor edi"
                       className={classes.img}
                     />
@@ -402,12 +403,12 @@ function ProductDetails(): JSX.Element {
                   </div>
                   <div>
                     <div>
-                      <p className={classes.price}> {pro?.[0]?.price} so`m </p>
+                      <p className={classes.price}> {pro[0]?.price} so`m </p>
                       <p className={classes.afterDiscount}>
                         {" "}
-                        {pro?.[0]?.after_discount?.toLocaleString()} so`m{" "}
+                        {pro[0]?.after_discount?.toLocaleString()} so`m{" "}
                       </p>
-                      <p className={classes.discount}> {pro?.[0].discount} %</p>
+                      <p className={classes.discount}> {pro[0]?.discount} %</p>
                     </div>
                     <div style={{ display: "flex" }}>
                       <Button className={classes.save}>Bekor qilish</Button>
