@@ -25,7 +25,6 @@ class ApiClient {
         if (token) {
           config.headers.Authorization = `Bearer ${token}`; // for Node.js Express back-end
         }
-        // console.log(token);
         return config;
       },
       (error) => {

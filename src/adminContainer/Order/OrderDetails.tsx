@@ -47,12 +47,17 @@ const useStyles = makeStyles({
     borderRadius: "5px",
     fontFamily: "Arial",
     padding: "30px !important",
+    width: "1200px",
+    // minWidth: "1200px",
+    // maxWidth: "1200px",
+    marginRight: "80px",
   },
   insideBox: {
     display: "flex",
     alignItems: "center !important",
     padding: "0 0 30px 0",
     marginTop: "0 !important",
+    width: "1100px",
   },
   insideBoxItem: {
     display: "flex",
@@ -223,296 +228,300 @@ function OrderDetails(): JSX.Element {
     getData();
   }, []);
   return (
-    <Box>
+    <Box sx={{ display: "flex" }}>
       <MiniDrawer />
-      <Container style={{ marginTop: "50px" }}>
-        <h2 className={classes.title}>Заказ</h2>
-      </Container>
-      <Container className={classes.bigBox}>
-        <Grid
-          direction="row"
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center !important"
-          sx={{ mt: "20px", borderBottom: "1px solid #9F9F9F" }}
-          className={classes.insideBox}
-        >
-          <Box className={classes.insideBoxItem}>
-            <img src={buyericon} alt="icon" />
-            <p className={classes.insideText}>
-              ID
-              {buyer?.id}
-            </p>
-          </Box>
-          <Tooltip title="Holati">
-            <FormControl size="small" sx={{ width: "250px" }}>
-              <InputLabel id="demo-simple-select-label">
-                {defaultStatus === "NOT_SERVED" ? (
-                  <div className={classes.statusDefaultBox}>
-                    <img src={notserved} alt="img" />
-                    <p
-                      className={classes.statusText}
-                      style={{
-                        color: "#FF4B4B",
-                        marginTop: "0",
-                        marginBottom: 0,
-                      }}
-                    >
-                      Не обслужена.
-                    </p>
-                  </div>
-                ) : defaultStatus === "SERVED" ? (
-                  <div className={classes.statusDefaultBox}>
-                    <img src={served} alt="img" />
-                    <p
-                      className={classes.statusText}
-                      style={{
-                        color: "#22AA00",
-                        marginTop: "0",
-                        marginBottom: 0,
-                      }}
-                    >
-                      Обслужена.
-                    </p>
-                  </div>
-                ) : defaultStatus === "ADMIN_CANCEL" ? (
-                  <div className={classes.statusDefaultBox}>
-                    <img src={admincancel} alt="img" />
-                    <p
-                      className={classes.statusText}
-                      style={{
-                        color: "#065374",
-                        marginTop: "0",
-                        marginBottom: 0,
-                      }}
-                    >
-                      Отменено администратором.
-                    </p>
-                  </div>
-                ) : defaultStatus === "CLIENT_CANCEL" ? (
-                  <div className={classes.statusDefaultBox}>
-                    <img src={clientcancel} alt="img" />
-                    <p
-                      className={classes.statusText}
-                      style={{
-                        color: "#27A8D1",
-                        marginTop: "0",
-                        marginBottom: 0,
-                      }}
-                    >
-                      Отменено клиентом.
-                    </p>
-                  </div>
-                ) : defaultStatus === "IN_PROGRESS" ? (
-                  <div className={classes.statusDefaultBox}>
-                    <img src={inprogress} alt="img" />
-                    <p
-                      className={classes.statusText}
-                      style={{
-                        color: "#E9A426",
-                        marginTop: "0",
-                        marginBottom: 0,
-                      }}
-                    >
-                      В ходе выполнения.
-                    </p>
-                  </div>
-                ) : (
-                  "Произошло ошибка"
-                )}
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-standard-label"
-                id="demo-simple-select-standard"
-                label="Age"
-                onChange={handleChange}
-              >
-                {statuses?.map((item: any) => (
-                  <MenuItem value={item?.id} key={item.id}>
-                    {item?.statusType === "NOT_SERVED" ? (
-                      <div className={classes.statusBox}>
-                        <img src={notserved} alt="img" />
-                        <p
-                          className={classes.statusText}
-                          style={{
-                            color: "#FF4B4B",
-                            marginTop: "0",
-                            marginBottom: 0,
-                          }}
-                        >
-                          Не обслужена.
-                        </p>
-                      </div>
-                    ) : item?.statusType === "SERVED" ? (
-                      <div className={classes.statusBox}>
-                        <img src={served} alt="img" />
-                        <p
-                          className={classes.statusText}
-                          style={{
-                            color: "#22AA00",
-                            marginTop: "0",
-                            marginBottom: 0,
-                          }}
-                        >
-                          Обслужена.
-                        </p>
-                      </div>
-                    ) : item?.statusType === "ADMIN_CANCEL" ? (
-                      <div className={classes.statusBox}>
-                        <img src={admincancel} alt="img" />
-                        <p
-                          className={classes.statusText}
-                          style={{
-                            color: "#065374",
-                            marginTop: "0",
-                            marginBottom: 0,
-                          }}
-                        >
-                          Отменено администратором.
-                        </p>
-                      </div>
-                    ) : item?.statusType === "CLIENT_CANCEL" ? (
-                      <div className={classes.statusBox}>
-                        <img src={clientcancel} alt="img" />
-                        <p
-                          className={classes.statusText}
-                          style={{
-                            color: "#27A8D1",
-                            marginTop: "0",
-                            marginBottom: 0,
-                          }}
-                        >
-                          Отменено клиентом.
-                        </p>
-                      </div>
-                    ) : item?.statusType === "IN_PROGRESS" ? (
-                      <div className={classes.statusBox}>
-                        <img src={inprogress} alt="img" />
-                        <p
-                          className={classes.statusText}
-                          style={{
-                            color: "#E9A426",
-                            marginTop: "0",
-                            marginBottom: 0,
-                          }}
-                        >
-                          В ходе выполнения.
-                        </p>
-                      </div>
-                    ) : (
-                      "Произошло ошибка"
-                    )}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Tooltip>
-        </Grid>
-        <Box>
-          <h2 className={classes.mainTitle}>Клиент</h2>
-          <Box className={classes.clientBigBox}>
-            <div className={classes.clientBox}>
-              <img src={fullnameicon} alt="icon" />
-              <p className={classes.clientText}>{buyer?.full_name}</p>
-            </div>
-            <div className={classes.clientBox}>
-              <img src={clientphone} alt="icon" />
-              <p className={classes.clientText}>{buyer?.phone}</p>
-            </div>
-            <div className={classes.clientBox}>
-              <img src={clientwallet} alt="icon" />
-              <p className={classes.clientText}>{buyer?.pay_type}</p>
-            </div>
-            <div className={classes.clientBox}>
-              <img src={clientaddress} alt="icon" />
-              <p className={classes.clientText}>
-                {buyer?.address} {buyer?.city}
+      <Box sx={{ ml: "20px" }}>
+        <Container style={{ marginTop: "100px" }}>
+          <h2 className={classes.title}>Заказ</h2>
+        </Container>
+        <Container className={classes.bigBox}>
+          <Grid
+            direction="row"
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center !important"
+            sx={{ mt: "20px", borderBottom: "1px solid #9F9F9F" }}
+            className={classes.insideBox}
+          >
+            <Box className={classes.insideBoxItem}>
+              <img src={buyericon} alt="icon" />
+              <p className={classes.insideText}>
+                ID
+                {buyer?.id}
               </p>
-            </div>
-          </Box>
-        </Box>
-        <Box className={classes.clientTable}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell align="left" className={classes.titleRows}>
-                  Продукт
-                </TableCell>
-                <TableCell align="left" className={classes.titleRows}>
-                  Цена
-                </TableCell>
-                <TableCell align="left" className={classes.titleRows}>
-                  Количество
-                </TableCell>
-                <TableCell align="left" className={classes.titleRows}>
-                  Итоговая цена
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            {journal?.map((item: any) => (
-              <TableBody key={item.id}>
-                <TableRow>
-                  <TableCell align="left" className={classes.productRows}>
-                    <div className={classes.productInfo}>
-                      <img
-                        src={`${MINIO_FULL_ENDPOINT_FOR}/product/${item?.photo}`}
-                        className={classes.productImg}
-                        alt="rasm bor edi"
-                      />
-                      <p className={classes.productName} key={item.id}>
-                        {item.product_name}
+            </Box>
+            <Tooltip title="Holati">
+              <FormControl size="small" sx={{ width: "250px" }}>
+                <InputLabel id="demo-simple-select-label">
+                  {defaultStatus === "NOT_SERVED" ? (
+                    <div className={classes.statusDefaultBox}>
+                      <img src={notserved} alt="img" />
+                      <p
+                        className={classes.statusText}
+                        style={{
+                          color: "#FF4B4B",
+                          marginTop: "0",
+                          marginBottom: 0,
+                        }}
+                      >
+                        Не обслужена.
                       </p>
                     </div>
+                  ) : defaultStatus === "SERVED" ? (
+                    <div className={classes.statusDefaultBox}>
+                      <img src={served} alt="img" />
+                      <p
+                        className={classes.statusText}
+                        style={{
+                          color: "#22AA00",
+                          marginTop: "0",
+                          marginBottom: 0,
+                        }}
+                      >
+                        Обслужена.
+                      </p>
+                    </div>
+                  ) : defaultStatus === "ADMIN_CANCEL" ? (
+                    <div className={classes.statusDefaultBox}>
+                      <img src={admincancel} alt="img" />
+                      <p
+                        className={classes.statusText}
+                        style={{
+                          color: "#065374",
+                          marginTop: "0",
+                          marginBottom: 0,
+                        }}
+                      >
+                        Отменено администратором.
+                      </p>
+                    </div>
+                  ) : defaultStatus === "CLIENT_CANCEL" ? (
+                    <div className={classes.statusDefaultBox}>
+                      <img src={clientcancel} alt="img" />
+                      <p
+                        className={classes.statusText}
+                        style={{
+                          color: "#27A8D1",
+                          marginTop: "0",
+                          marginBottom: 0,
+                        }}
+                      >
+                        Отменено клиентом.
+                      </p>
+                    </div>
+                  ) : defaultStatus === "IN_PROGRESS" ? (
+                    <div className={classes.statusDefaultBox}>
+                      <img src={inprogress} alt="img" />
+                      <p
+                        className={classes.statusText}
+                        style={{
+                          color: "#E9A426",
+                          marginTop: "0",
+                          marginBottom: 0,
+                        }}
+                      >
+                        В ходе выполнения.
+                      </p>
+                    </div>
+                  ) : (
+                    "Произошло ошибка"
+                  )}
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  label="Age"
+                  onChange={handleChange}
+                >
+                  {statuses?.map((item: any) => (
+                    <MenuItem value={item?.id} key={item.id}>
+                      {item?.statusType === "NOT_SERVED" ? (
+                        <div className={classes.statusBox}>
+                          <img src={notserved} alt="img" />
+                          <p
+                            className={classes.statusText}
+                            style={{
+                              color: "#FF4B4B",
+                              marginTop: "0",
+                              marginBottom: 0,
+                            }}
+                          >
+                            Не обслужена.
+                          </p>
+                        </div>
+                      ) : item?.statusType === "SERVED" ? (
+                        <div className={classes.statusBox}>
+                          <img src={served} alt="img" />
+                          <p
+                            className={classes.statusText}
+                            style={{
+                              color: "#22AA00",
+                              marginTop: "0",
+                              marginBottom: 0,
+                            }}
+                          >
+                            Обслужена.
+                          </p>
+                        </div>
+                      ) : item?.statusType === "ADMIN_CANCEL" ? (
+                        <div className={classes.statusBox}>
+                          <img src={admincancel} alt="img" />
+                          <p
+                            className={classes.statusText}
+                            style={{
+                              color: "#065374",
+                              marginTop: "0",
+                              marginBottom: 0,
+                            }}
+                          >
+                            Отменено администратором.
+                          </p>
+                        </div>
+                      ) : item?.statusType === "CLIENT_CANCEL" ? (
+                        <div className={classes.statusBox}>
+                          <img src={clientcancel} alt="img" />
+                          <p
+                            className={classes.statusText}
+                            style={{
+                              color: "#27A8D1",
+                              marginTop: "0",
+                              marginBottom: 0,
+                            }}
+                          >
+                            Отменено клиентом.
+                          </p>
+                        </div>
+                      ) : item?.statusType === "IN_PROGRESS" ? (
+                        <div className={classes.statusBox}>
+                          <img src={inprogress} alt="img" />
+                          <p
+                            className={classes.statusText}
+                            style={{
+                              color: "#E9A426",
+                              marginTop: "0",
+                              marginBottom: 0,
+                            }}
+                          >
+                            В ходе выполнения.
+                          </p>
+                        </div>
+                      ) : (
+                        "Произошло ошибка"
+                      )}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Tooltip>
+          </Grid>
+          <Box>
+            <h2 className={classes.mainTitle}>Клиент</h2>
+            <Box className={classes.clientBigBox}>
+              <div className={classes.clientBox}>
+                <img src={fullnameicon} alt="icon" />
+                <p className={classes.clientText}>{buyer?.full_name}</p>
+              </div>
+              <div className={classes.clientBox}>
+                <img src={clientphone} alt="icon" />
+                <p className={classes.clientText}>{buyer?.phone}</p>
+              </div>
+              <div className={classes.clientBox}>
+                <img src={clientwallet} alt="icon" />
+                <p className={classes.clientText}>{buyer?.pay_type}</p>
+              </div>
+              <div className={classes.clientBox}>
+                <img src={clientaddress} alt="icon" />
+                <p className={classes.clientText}>
+                  {buyer?.address} {buyer?.city}
+                </p>
+              </div>
+            </Box>
+          </Box>
+          <Box className={classes.clientTable}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left" className={classes.titleRows}>
+                    Продукт
                   </TableCell>
-                  <TableCell
-                    align="left"
-                    className={classes.productRows}
-                    key={item.id}
-                  >
-                    {item?.price?.toLocaleString()} so`m
+                  <TableCell align="left" className={classes.titleRows}>
+                    Цена
                   </TableCell>
-                  <TableCell
-                    align="left"
-                    className={classes.productRows}
-                    key={item.id}
-                  >
-                    {item.quantity}
+                  <TableCell align="left" className={classes.titleRows}>
+                    Количество
                   </TableCell>
-                  <TableCell
-                    align="left"
-                    className={classes.productRows}
-                    key={item.id}
-                  >
-                    {(item.price * item.quantity)?.toLocaleString()}
+                  <TableCell align="left" className={classes.titleRows}>
+                    Итоговая цена
                   </TableCell>
                 </TableRow>
-              </TableBody>
-            ))}
-          </Table>
-        </Box>
-        <Box
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginTop: "18px",
-          }}
-        >
-          <Box className={classes.priceBox}>
-            <p className={classes.priceText}>
-              Итого:{" "}
-              <span style={{ fontWeight: 500 }}>{price?.toLocaleString()}</span>
-            </p>
-            <button
-              type="button"
-              className={classes.saveButton}
-              onClick={sendDataToAPI}
-            >
-              Сохранить
-            </button>
+              </TableHead>
+              {journal?.map((item: any) => (
+                <TableBody key={item.id}>
+                  <TableRow>
+                    <TableCell align="left" className={classes.productRows}>
+                      <div className={classes.productInfo}>
+                        <img
+                          src={`${MINIO_FULL_ENDPOINT_FOR}/product/${item?.photo}`}
+                          className={classes.productImg}
+                          alt="rasm bor edi"
+                        />
+                        <p className={classes.productName} key={item.id}>
+                          {item.product_name}
+                        </p>
+                      </div>
+                    </TableCell>
+                    <TableCell
+                      align="left"
+                      className={classes.productRows}
+                      key={item.id}
+                    >
+                      {item?.price?.toLocaleString()} so`m
+                    </TableCell>
+                    <TableCell
+                      align="left"
+                      className={classes.productRows}
+                      key={item.id}
+                    >
+                      {item.quantity}
+                    </TableCell>
+                    <TableCell
+                      align="left"
+                      className={classes.productRows}
+                      key={item.id}
+                    >
+                      {(item.price * item.quantity)?.toLocaleString()}
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              ))}
+            </Table>
           </Box>
-        </Box>
-      </Container>
-      <Notification notify={notify} setNotify={setNotify} />
+          <Box
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginTop: "18px",
+            }}
+          >
+            <Box className={classes.priceBox}>
+              <p className={classes.priceText}>
+                Итого:{" "}
+                <span style={{ fontWeight: 500 }}>
+                  {price?.toLocaleString()}
+                </span>
+              </p>
+              <button
+                type="button"
+                className={classes.saveButton}
+                onClick={sendDataToAPI}
+              >
+                Сохранить
+              </button>
+            </Box>
+          </Box>
+        </Container>
+        <Notification notify={notify} setNotify={setNotify} />
+      </Box>
     </Box>
   );
 }

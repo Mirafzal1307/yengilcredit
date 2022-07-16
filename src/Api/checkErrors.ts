@@ -23,6 +23,7 @@ export const checkErrorTwo = (message: any, status: any): any => {
     switch (message) {
       case "code=2":
         window.location.href = "/login";
+        window.location.pathname = "/login";
         break;
       default:
         return message;
@@ -34,6 +35,7 @@ export const checkErrorThree = (message: any, status: any): any => {
     switch (message) {
       case "code=3":
         window.location.href = "/login";
+        window.location.pathname = "/login";
         break;
       default:
         return message;

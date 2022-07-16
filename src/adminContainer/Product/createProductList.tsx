@@ -435,11 +435,11 @@ function ProductsCreate(): JSX.Element {
   length();
 
   return (
-    <div className={classes.headers}>
+    <Box sx={{ display: "flex" }}>
       <MiniDrawer />
-      <Box>
+      <Box sx={{ ml: "50px" }}>
         <Container
-          style={{ marginTop: "50px" }}
+          style={{ marginTop: "100px" }}
           className={classes.CreateContainerTitle}
         >
           <form action="">
@@ -749,7 +749,7 @@ function ProductsCreate(): JSX.Element {
           </form>
         </Container>
       </Box>
-    </div>
+    </Box>
   );
 }
 
