@@ -530,14 +530,16 @@ function BrandPage(): JSX.Element {
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
+                              width: "25%",
                             }}
                           >
                             <img
                               src={`${MINIO_FULL_ENDPOINT_FOR}/product/${item.photos[0].name}`}
                               alt="img"
                               style={{
-                                width: "auto",
-                                height: "70%",
+                                width: "75%",
+                                height: "auto",
+                                objectFit: "cover",
                                 alignSelf: "center !important",
                                 justifySelf: "center !important",
                               }}
