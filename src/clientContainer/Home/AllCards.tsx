@@ -14,14 +14,12 @@ import AppsIcon from "@mui/icons-material/Apps";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { useDispatch } from "react-redux";
 import { getAllCards } from "../../Api/client/MainProductsApi";
-
 import BackToTop from "./Navbar/Navbar";
 import BigPhoto from "../../Images/image26.png";
 import cart1 from "../../Images/cart1.svg";
 import cart2 from "../../Images/cart2.svg";
 import { getProductByBrand } from "../../Api/client/ClientBrandApi";
 import { MINIO_FULL_ENDPOINT_FOR } from "../../constants/ApiConstants";
-
 import Notification from "../../adminContainer/Snackbar/Notification";
 import { addToCart } from "../../redux/cart/action";
 import Footer from "./Footer";

@@ -18,16 +18,12 @@ import BigPhoto from "../../Images/image26.png";
 import { useTypedSelector } from "../../hook/useTypedSelector";
 import cart1 from "../../Images/cart1.svg";
 import cart2 from "../../Images/cart2.svg";
-
 import { getProductFromCategoryById } from "../../Api/admin/AdminProductApi";
-// import { SelectChangeEvent } from "@mui/material";
-
 import BackToTop from "./Navbar/Navbar";
 import Footer from "./Footer";
 import { getCategoryForClient } from "../../Api/client/ClientCategoryApi";
 import { MINIO_FULL_ENDPOINT_FOR } from "../../constants/ApiConstants";
 import shop from "../../Images/baskets.png";
-
 import { addToCart } from "../../redux/cart/action";
 import Notification from "../../adminContainer/Snackbar/Notification";
 import { useActions } from "../../hook/useActions";
@@ -521,6 +517,7 @@ function CategoryProducts(): JSX.Element {
                         alignItems: "center",
                         justifyContent: "center",
                         width: "40%",
+                        height: "auto",
                       }}
                     >
                       <img
